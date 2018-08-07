@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  condition = true;
+
+  changeShow() {
+    this.condition = !this.condition;
+  }
 }
