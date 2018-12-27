@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-modal',
@@ -14,9 +14,13 @@ export class ModalComponent implements OnInit {
   @Input()
   okText: string; // 确定按钮文本
   @Input()
-  cancleText: string; // 取消按钮文本
+  cancelText: string; // 取消按钮文本
   @Input()
   isVisible = false;
+  @Output()
+  isVisibleChange = new EventEmitter(); // dialog显示状态改变事件
+  @Output()
+  clickEvent = new EventEmitter<string>();
 
   constructor() { }
 
@@ -24,12 +28,12 @@ export class ModalComponent implements OnInit {
   }
 
   handleOk(): void {
-    console.log('Button ok clicked!');
-    this.isVisible = false;
+    this.clickEvent.emit('点击确定');
+    this.isVisibleChange.emit(false);
   }
 
   handleCancel(): void {
-    console.log('Button cancel clicked!');
-    this.isVisible = false;
+    this.clickEvent.emit('点击取消');
+    this.isVisibleChange.emit(false);
   }
 }

@@ -1,3 +1,4 @@
+<h2>点击事件：{{clickEvent}}</h2>
 <button 
   nz-button 
   [nzType]="'primary'"
@@ -6,9 +7,10 @@
 </button>
 
 <app-modal 
-  [isVisible]="modalIsVisible"
+  [(isVisible)]="modalIsVisible"
+  (clickEvent)= "getClickEvent($event)"
   title="测试标题"
   content="测试内容"
   okText="确定"
-  cancleText="取消">
+  cancelText="取消">
 </app-modal>

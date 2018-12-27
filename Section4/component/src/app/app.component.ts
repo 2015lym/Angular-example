@@ -7,10 +7,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'component';
+  clickEvent = '';
 
   modalIsVisible = false;
 
   showModal(): void {
     this.modalIsVisible = true;
   }
+
+  getClickEvent(eventName: string) {
+    this.clickEvent = eventName;
+  }
+
 }
