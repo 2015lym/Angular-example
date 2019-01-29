@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
@@ -23,6 +23,7 @@ registerLocaleData(zh);
     BrowserModule,
     NgZorroAntdModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     NoopAnimationsModule
   ],
