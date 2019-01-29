@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -25,7 +20,7 @@ export class FormTestComponent implements OnInit {
       birthday: [null, [Validators.required]],
       email: [null, [Validators.email, Validators.required]],
       phoneNumberPrefix: ['+86'],
-      phoneNumber: [null, [Validators.required]]
+      phoneNumber: [null, [Validators.required, Validators.pattern(/^1([38]\d|5[0-35-9]|7[3678])\d{8}$/)]]
     });
   }
 
