@@ -6,6 +6,14 @@ import { AppComponent } from './app.component';
 import { AComponent } from './a/a.component';
 import { BComponent } from './b/b.component';
 import { CComponent } from './c/c.component';
+import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+
+registerLocaleData(en);
 
 @NgModule({
   declarations: [
@@ -16,9 +24,13 @@ import { CComponent } from './c/c.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgZorroAntdModule,
+    FormsModule,
+    HttpClientModule,
+    NoopAnimationsModule
   ],
-  providers: [],
+  providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
