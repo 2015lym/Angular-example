@@ -12,6 +12,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
+import { StudentComponent } from './student/student.component';
+import { TeacherComponent } from './teacher/teacher.component';
+import { ParentComponent } from './parent/parent.component';
 
 registerLocaleData(en);
 
@@ -20,7 +23,10 @@ registerLocaleData(en);
     AppComponent,
     AComponent,
     BComponent,
-    CComponent
+    CComponent,
+    StudentComponent,
+    TeacherComponent,
+    ParentComponent
   ],
   imports: [
     BrowserModule,
