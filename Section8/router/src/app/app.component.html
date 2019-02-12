@@ -1,4 +1,4 @@
 <button nz-button nzType="primary" [routerLink]="['/A']">A组件</button>
-<button nz-button nzType="primary" [routerLink]="['/B']">B组件</button>
-<button nz-button nzType="primary" [routerLink]="['/C']">C组件</button>
+<button nz-button nzType="primary" routerLink="/B">B组件</button>
+<button nz-button nzType="primary" (click)="routerToC()">C组件</button>
 <router-outlet></router-outlet>
