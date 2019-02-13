@@ -11,10 +11,16 @@ const routes: Routes = [
   { path: '', component: AComponent },
   { path: 'A', component: AComponent },
   { path: 'B', component: BComponent },
-  { path: 'C', component: CComponent },
-  { path: 'student', component: StudentComponent },
-  { path: 'teacher/:name', component: TeacherComponent },
-  { path: 'parent', component: ParentComponent, data: { name: '王五' } }
+  {
+    path: 'C',
+    component: CComponent,
+    children: [
+      { path: 'student', component: StudentComponent },
+      { path: 'teacher/:name', component: TeacherComponent },
+      { path: 'parent', component: ParentComponent, data: { name: '王五' } }
+    ]
+  }
+
 ];
 
 @NgModule({
