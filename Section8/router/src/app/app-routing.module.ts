@@ -13,8 +13,8 @@ const routes: Routes = [
   { path: 'B', component: BComponent },
   { path: 'C', component: CComponent },
   { path: 'student', component: StudentComponent },
-  { path: 'teacher', component: TeacherComponent },
-  { path: 'parent', component: ParentComponent }
+  { path: 'teacher/:name', component: TeacherComponent },
+  { path: 'parent', component: ParentComponent, data: { name: '王五' } }
 ];
 
 @NgModule({

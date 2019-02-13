@@ -21,7 +21,7 @@ export class AppComponent {
     if (this.selectedValue === 'student') {
       this.router.navigate(['/student'], { queryParams: { name: '张三' } });
     } else if (this.selectedValue === 'teacher') {
-      this.router.navigate(['/teacher']);
+      this.router.navigate(['/teacher', '李四']);
     } else {
       this.router.navigate(['/parent']);
     }
