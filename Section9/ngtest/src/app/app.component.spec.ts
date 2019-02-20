@@ -1,11 +1,16 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { FormsModule } from '@angular/forms';
+import { UserInfoComponent } from './component/user-info/user-info.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [FormsModule, NgZorroAntdModule],
       declarations: [
-        AppComponent
+        AppComponent,
+        UserInfoComponent
       ],
     }).compileComponents();
   }));
