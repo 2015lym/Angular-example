@@ -14,7 +14,7 @@ export class UserInfoComponent implements OnInit {
   ngOnInit() { }
 
   changeStatus() {
-    if (this.status = '停用') {
+    if (this.status == '停用') {
       this.status = '正常';
     } else {
       this.status = '停用';

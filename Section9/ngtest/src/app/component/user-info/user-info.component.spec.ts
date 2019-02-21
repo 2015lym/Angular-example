@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { UserInfoComponent } from './user-info.component';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('UserInfoComponent', () => {
   let component: UserInfoComponent;
@@ -10,10 +11,9 @@ describe('UserInfoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, NgZorroAntdModule],
-      declarations: [ UserInfoComponent ]
-    })
-    .compileComponents();
+      imports: [BrowserAnimationsModule, NoopAnimationsModule, FormsModule, NgZorroAntdModule],
+      declarations: [UserInfoComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

@@ -3,11 +3,12 @@ import { AppComponent } from './app.component';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { FormsModule } from '@angular/forms';
 import { UserInfoComponent } from './component/user-info/user-info.component';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, NgZorroAntdModule],
+      imports: [BrowserAnimationsModule, NoopAnimationsModule, FormsModule, NgZorroAntdModule],
       declarations: [
         AppComponent,
         UserInfoComponent
