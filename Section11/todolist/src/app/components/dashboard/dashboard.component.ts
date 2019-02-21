@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,13 +18,12 @@ export class DashboardComponent implements OnInit {
   // 完成数组
   private doneArray: Array<Object> = [];
 
-  constructor() { }
+  constructor(private message: NzMessageService) { }
 
   // 生命周期
   ngOnInit() {
     this.getTodoList();
   }
-
 
   // 获取列表数据
   private getTodoList(): void {
@@ -44,10 +44,7 @@ export class DashboardComponent implements OnInit {
   // 添加Todo
   private addTodo(): void {
     if (this.todoTitle === '') {
-      // this.$message({
-      //   type: 'info',
-      //   message: '请输入标题'
-      // });
+      this.message.info('请输入标题');
     } else {
       const item = {
         done: false,
@@ -58,19 +55,6 @@ export class DashboardComponent implements OnInit {
       this.todoTitle = '';
       localStorage.setItem('todo-list', JSON.stringify(this.dataArray));
     }
-  }
-
-  // 删除项目
-  private deleteItem(data: Object) {
-    const index: number = data['index'];
-    const done: boolean = data['done'];
-    if (done) {
-      this.doneArray.splice(index, 1);
-    } else {
-      this.doingArray.splice(index, 1);
-    }
-    this.dataArray = this.doingArray.concat(this.doneArray);
-    localStorage.setItem('todo-list', JSON.stringify(this.dataArray));
   }
 
   // 打钩
@@ -92,4 +76,18 @@ export class DashboardComponent implements OnInit {
     this.dataArray = this.doingArray.concat(this.doneArray);
     localStorage.setItem('todo-list', JSON.stringify(this.dataArray));
   }
+
+  // 删除项目
+  private deleteItem(data: Object) {
+    const index: number = data['index'];
+    const done: boolean = data['done'];
+    if (done) {
+      this.doneArray.splice(index, 1);
+    } else {
+      this.doingArray.splice(index, 1);
+    }
+    this.dataArray = this.doingArray.concat(this.doneArray);
+    localStorage.setItem('todo-list', JSON.stringify(this.dataArray));
+  }
+
 }

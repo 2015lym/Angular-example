@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { NzModalRef, NzModalService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-item',
@@ -13,17 +14,18 @@ export class ItemComponent implements OnInit {
   @Input()
   done: boolean; // 状态
   @Output()
-  checkItemEvent = new EventEmitter<Object>(); // dialog显示状态改变事件
+  checkItemEvent = new EventEmitter<Object>(); // 选项打钩事件
   @Output()
-  deleteItemEvent = new EventEmitter();
+  deleteItemEvent = new EventEmitter(); // 删除选项事件
 
+  // 对话框
+  confirmModal: NzModalRef;
 
-  constructor() { }
+  constructor(private modal: NzModalService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
-
+  // 选项打钩
   checkItem(): void {
     const data: Object = {
       index: this.index,
@@ -31,15 +33,22 @@ export class ItemComponent implements OnInit {
       done: this.done
     };
     this.checkItemEvent.emit(data);
-    // this.checkItem(this.index);
-    // this.$emit("checkItem", this.index, this.done, this.title);
   }
 
+  // 删除选项
   deleteItem(): void {
-    const data: Object = {
-      index: this.index,
-      done: this.done
-    };
-    this.deleteItemEvent.emit(data);
+    this.confirmModal = this.modal.confirm({
+      nzTitle: '提示',
+      nzContent: '确定要删除吗？',
+      nzOkText: '确定',
+      nzCancelText: '取消',
+      nzOnOk: () => {
+        const data: Object = {
+          index: this.index,
+          done: this.done
+        };
+        this.deleteItemEvent.emit(data);
+      }
+    });
   }
 }
