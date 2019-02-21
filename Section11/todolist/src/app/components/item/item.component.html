@@ -1,0 +1,3 @@
+<label nz-checkbox [(ngModel)]="done" (ngModelChange)="checkItem()"></label>
+<input nz-input [(ngModel)]="title" [disabled]="true" class="edit-input">
+<button (click)="deleteItem()" nz-button nzType="danger">删除</button>
