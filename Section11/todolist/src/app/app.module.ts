@@ -10,6 +10,7 @@ import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ItemComponent } from './components/item/item.component';
+import { EidtModalComponent } from './components/eidt-modal/eidt-modal.component';
 
 registerLocaleData(en);
 
@@ -17,7 +18,8 @@ registerLocaleData(en);
   declarations: [
     AppComponent,
     DashboardComponent,
-    ItemComponent
+    ItemComponent,
+    EidtModalComponent
   ],
   imports: [
     BrowserModule,
