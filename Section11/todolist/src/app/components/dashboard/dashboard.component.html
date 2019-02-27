@@ -4,12 +4,17 @@
   <button nz-button nzType="primary" style="margin-left: 15px" (click)="addTodo()">添加</button>
   <h2>正在进行 {{doingArray.length}}</h2>
   <div *ngFor="let item of doingArray;let i = index" style="margin-top: 15px">
-    <app-item *ngIf="item.done == false" [index]="index" [title]="item.title" [done]="item.done"
+    <app-item [index]="i" [title]="item.title" [done]="item.done"
       (deleteItemEvent)="deleteItem($event)" (checkItemEvent)="checkItem($event)"></app-item>
   </div>
   <h2>已经完成 {{doneArray.length}}</h2>
   <div *ngFor="let item of doneArray;let i = index" style="margin-top: 15px">
-    <app-item *ngIf="item.done == true" [index]="index" [title]="item.title" [done]="item.done"
+    <app-item [index]="i" [title]="item.title" [done]="item.done"
       (deleteItemEvent)="deleteItem($event)" (checkItemEvent)="checkItem($event)"></app-item>
   </div>
 </div>
+
+<app-edit-modal 
+  [(isVisible)]="modalIsVisible"
+  (clickEvent)= "getClickEvent($event)">
+</app-edit-modal>

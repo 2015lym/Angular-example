@@ -19,7 +19,11 @@ export class DashboardComponent implements OnInit {
   private doneArray: Array<Object> = [];
 
   constructor(private message: NzMessageService) { }
+  modalIsVisible = false;
 
+  getClickEvent(eventName: string) {
+    // this.clickEvent = eventName;
+  }
   // 生命周期
   ngOnInit() {
     this.getTodoList();
@@ -43,18 +47,19 @@ export class DashboardComponent implements OnInit {
 
   // 添加Todo
   private addTodo(): void {
-    if (this.todoTitle === '') {
-      this.message.info('请输入标题');
-    } else {
-      const item = {
-        done: false,
-        title: this.todoTitle
-      };
-      this.doingArray.push(item);
-      this.dataArray.push(item);
-      this.todoTitle = '';
-      localStorage.setItem('todo-list', JSON.stringify(this.dataArray));
-    }
+    this.modalIsVisible = true;
+    // if (this.todoTitle === '') {
+    //   this.message.info('请输入标题');
+    // } else {
+    //   const item = {
+    //     done: false,
+    //     title: this.todoTitle
+    //   };
+    //   this.doingArray.push(item);
+    //   this.dataArray.push(item);
+    //   this.todoTitle = '';
+    //   localStorage.setItem('todo-list', JSON.stringify(this.dataArray));
+    // }
   }
 
   // 打钩
