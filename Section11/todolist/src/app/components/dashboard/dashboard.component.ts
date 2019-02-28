@@ -18,13 +18,14 @@ export class DashboardComponent implements OnInit {
   // 完成数组
   private doneArray: Array<Object> = [];
 
-  constructor(private message: NzMessageService) { }
-  modalIsVisible = false;
+  modalIsVisible: boolean = false;
+  editTitle: string = '';
+  editDate: string = '';
+  editDone: boolean = false;
+  editIndex: number = 0;
 
-  getClickEvent(data: Object) {
-    console.log(JSON.stringify(data));
-    // this.clickEvent = eventName;
-  }
+  constructor(private message: NzMessageService) { }
+
   // 生命周期
   ngOnInit() {
     this.getTodoList();
@@ -48,29 +49,42 @@ export class DashboardComponent implements OnInit {
 
   // 添加Todo
   private addTodo(): void {
+    this.editTitle = '';
+    this.editDate = '';
+    this.editDone = false;
+    this.editIndex = 0;
     this.modalIsVisible = true;
-    // if (this.todoTitle === '') {
-    //   this.message.info('请输入标题');
-    // } else {
-    //   const item = {
-    //     done: false,
-    //     title: this.todoTitle
-    //   };
-    //   this.doingArray.push(item);
-    //   this.dataArray.push(item);
-    //   this.todoTitle = '';
-    //   localStorage.setItem('todo-list', JSON.stringify(this.dataArray));
-    // }
+  }
+
+  // 添加、编辑事件
+  addTodoEvent(data: Object) {
+    const item = {
+      title: data['title'],
+      date: data['date'],
+      done: data['done']
+    };
+
+    if (data['done'] == true) {
+      this.doneArray[data['index']] = item;
+    } else {
+      if (data['isEdit'] == true) {
+        this.doingArray[data['index']] = item;
+      } else {
+        this.doingArray.push(item);
+      }
+    }
+    this.dataArray = this.doingArray.concat(this.doneArray);
+    localStorage.setItem('todo-list', JSON.stringify(this.dataArray));
   }
 
   // 打钩
   private checkItem(data: Object) {
     const index: number = data['index'];
-    const title: boolean = data['title'];
     const done: boolean = data['done'];
     const newItem = {
-      done: done,
-      title: title
+      title: data['title'],
+      date: data['date'],
+      done: done
     };
     if (done) {
       this.doingArray.splice(index, 1);
@@ -84,7 +98,12 @@ export class DashboardComponent implements OnInit {
   }
 
   // 编辑项目
-  editItem(data: Object) {
+  private editItem(data: Object) {
+    this.editTitle = data['title'];
+    this.editDate = data['date'];
+    this.editDone = data['done'];
+    this.editIndex = data['index'];
+    this.modalIsVisible = true;
   }
 
   // 删除项目

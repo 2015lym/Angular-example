@@ -9,7 +9,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class EditModalComponent implements OnInit {
 
   @Input()
-  modalTitle: string; // 模态框的标题
+  title: string = '';
+  @Input()
+  date: string = '';
+  @Input()
+  done: string = '';
+  @Input()
+  index: number = 0;
   @Input()
   isVisible = false; // 是否显示模态窗
   @Output()
@@ -17,18 +23,32 @@ export class EditModalComponent implements OnInit {
   @Output()
   clickEvent = new EventEmitter<Object>();
 
-  title: string = '';
-  date: string = '';
+  isEdit: boolean = false;
   validateForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
-  }
-
-  ngOnInit() {
     this.validateForm = this.fb.group({
       title: [null, [Validators.required, Validators.maxLength(15)]],
       date: [null, [Validators.required]]
     });
+  }
+
+  ngOnInit() { }
+
+  ngOnChanges() {
+    if (this.title) {
+      this.isEdit = true;
+      this.validateForm.setValue({
+        title: this.title,
+        date: this.date,
+      });
+    } else {
+      this.isEdit = false;
+      this.validateForm.setValue({
+        title: '',
+        date: '',
+      });
+    }
   }
 
   handleOk(): void {
@@ -36,7 +56,6 @@ export class EditModalComponent implements OnInit {
   }
 
   handleCancel(): void {
-    this.clickEvent.emit('点击取消');
     this.isVisibleChange.emit(false);
   }
 
@@ -56,6 +75,11 @@ export class EditModalComponent implements OnInit {
     }
     this.setDate('date'); // 颁布日期
     params['date'] = this.validateForm.get('date').value;
+    params['isEdit'] = this.isEdit;
+    if (this.isEdit) {
+      params['done'] = this.done;
+      params['index'] = this.index;
+    }
     this.clickEvent.emit(params);
     this.isVisibleChange.emit(false);
   }

@@ -1,4 +1,4 @@
-<nz-modal [(nzVisible)]="isVisible" [nzTitle]="modalTitle" nzOkText="确定" nzCancelText="取消" (nzOnCancel)="handleCancel()"
+<nz-modal [(nzVisible)]="isVisible" nzTitle="添加待办" nzOkText="确定" nzCancelText="取消" (nzOnCancel)="handleCancel()"
   (nzOnOk)="handleOk()">
   <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
     <nz-form-item>

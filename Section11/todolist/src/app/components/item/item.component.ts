@@ -12,6 +12,8 @@ export class ItemComponent implements OnInit {
   @Input()
   title: string; // 标题
   @Input()
+  date: boolean; // 日期
+  @Input()
   done: boolean; // 状态
   @Output()
   checkItemEvent = new EventEmitter<Object>(); // 选项打钩事件
@@ -32,16 +34,18 @@ export class ItemComponent implements OnInit {
     const data: Object = {
       index: this.index,
       title: this.title,
+      date: this.date,
       done: this.done
     };
     this.checkItemEvent.emit(data);
   }
 
   // 编辑选项
-  editItem() {
+  editItem(): void {
     const data: Object = {
       index: this.index,
       title: this.title,
+      date: this.date,
       done: this.done
     };
     this.editItemEvent.emit(data);
