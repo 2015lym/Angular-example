@@ -15,7 +15,7 @@ export class EditModalComponent implements OnInit {
   @Output()
   isVisibleChange = new EventEmitter(); // dialog显示状态改变事件
   @Output()
-  clickEvent = new EventEmitter<string>();
+  clickEvent = new EventEmitter<Object>();
 
   title: string = '';
   date: string = '';
@@ -41,14 +41,36 @@ export class EditModalComponent implements OnInit {
   }
 
   submitForm(): void {
+    let params = {};
     for (const i in this.validateForm.controls) {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();
       if (!(this.validateForm.controls[i].status == 'VALID') && this.validateForm.controls[i].status !== 'DISABLED') {
         return;
       }
+      if (this.validateForm.controls[i] && this.validateForm.controls[i].value) {
+        params[i] = this.validateForm.controls[i].value;
+      } else {
+        params[i] = '';
+      }
     }
-    this.clickEvent.emit('点击确定');
+    this.setDate('date'); // 颁布日期
+    params['date'] = this.validateForm.get('date').value;
+    this.clickEvent.emit(params);
     this.isVisibleChange.emit(false);
+  }
+
+  // 设置日期格式
+  setDate(dates) {
+    const time = new Date(this.validateForm.get(dates).value);
+    const datetime = time.getFullYear() + '-' + this.formatDayAndMonth(time.getMonth() + 1) + '-' + this.formatDayAndMonth(time.getDate());
+    this.validateForm.get(dates).setValue(datetime);
+  }
+
+  formatDayAndMonth(val) {
+    if (val < 10) {
+      val = '0' + val;
+    }
+    return val;
   }
 }

@@ -10,7 +10,7 @@
   <h2>已经完成 {{doneArray.length}}</h2>
   <div *ngFor="let item of doneArray;let i = index" style="margin-top: 15px">
     <app-item [index]="i" [title]="item.title" [done]="item.done"
-      (deleteItemEvent)="deleteItem($event)" (checkItemEvent)="checkItem($event)"></app-item>
+    (checkItemEvent)="checkItem($event)" (editItemEvent)="editItem($event)" (deleteItemEvent)="deleteItem($event)" ></app-item>
   </div>
 </div>
 

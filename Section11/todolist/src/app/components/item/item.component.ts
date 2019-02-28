@@ -16,7 +16,9 @@ export class ItemComponent implements OnInit {
   @Output()
   checkItemEvent = new EventEmitter<Object>(); // 选项打钩事件
   @Output()
-  deleteItemEvent = new EventEmitter(); // 删除选项事件
+  editItemEvent = new EventEmitter<Object>(); // 编辑选项事件
+  @Output()
+  deleteItemEvent = new EventEmitter<Object>(); // 删除选项事件
 
   // 对话框
   confirmModal: NzModalRef;
@@ -33,6 +35,16 @@ export class ItemComponent implements OnInit {
       done: this.done
     };
     this.checkItemEvent.emit(data);
+  }
+
+  // 编辑选项
+  editItem() {
+    const data: Object = {
+      index: this.index,
+      title: this.title,
+      done: this.done
+    };
+    this.editItemEvent.emit(data);
   }
 
   // 删除选项

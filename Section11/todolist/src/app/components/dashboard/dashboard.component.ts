@@ -21,7 +21,8 @@ export class DashboardComponent implements OnInit {
   constructor(private message: NzMessageService) { }
   modalIsVisible = false;
 
-  getClickEvent(eventName: string) {
+  getClickEvent(data: Object) {
+    console.log(JSON.stringify(data));
     // this.clickEvent = eventName;
   }
   // 生命周期
@@ -80,6 +81,10 @@ export class DashboardComponent implements OnInit {
     }
     this.dataArray = this.doingArray.concat(this.doneArray);
     localStorage.setItem('todo-list', JSON.stringify(this.dataArray));
+  }
+
+  // 编辑项目
+  editItem(data: Object) {
   }
 
   // 删除项目
