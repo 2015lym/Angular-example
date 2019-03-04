@@ -11,7 +11,6 @@ export class EditModalComponent implements OnInit {
 
   @Input()
   data: Object = {};
-
   @Input()
   isVisible = false; // 是否显示模态窗
   @Output()
