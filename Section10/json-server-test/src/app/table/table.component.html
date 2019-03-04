@@ -1,0 +1,27 @@
+<button (click)="addPeople()" nz-button nzType="primary" style="margin: 20px; width: 100px;">添加</button>
+
+<nz-table style="padding: 20px" #myTable [nzData]="listData">
+  <thead>
+    <tr>
+      <th>姓名</th>
+      <th>年龄</th>
+      <th>住址</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of myTable.data">
+      <td>{{data.name}}</td>
+      <td>{{data.age}}</td>
+      <td>{{data.address}}</td>
+      <td>
+        <a (click)="edit(data)">编辑</a>
+        <nz-divider nzType="vertical"></nz-divider>
+        <a (click)="delete(data)" style="color:red">删除</a>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+
+<app-edit-modal [data]="editData" [(isVisible)]="modalIsVisible" (clickEvent)="clickEvent()">
+</app-edit-modal>
