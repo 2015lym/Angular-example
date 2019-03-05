@@ -9,13 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class EditModalComponent implements OnInit {
 
   @Input()
-  title: string = '';
-  @Input()
-  date: string = '';
-  @Input()
-  done: string = '';
-  @Input()
-  index: number = 0;
+  data: Object = {};
   @Input()
   isVisible = false; // 是否显示模态窗
   @Output()
@@ -36,11 +30,11 @@ export class EditModalComponent implements OnInit {
   ngOnInit() { }
 
   ngOnChanges() {
-    if (this.title) {
+    if (this.data['id']) {
       this.isEdit = true;
       this.validateForm.setValue({
-        title: this.title,
-        date: this.date,
+        title: this.data['title'],
+        date: this.data['date'],
       });
     } else {
       this.isEdit = false;
@@ -77,8 +71,10 @@ export class EditModalComponent implements OnInit {
     params['date'] = this.validateForm.get('date').value;
     params['isEdit'] = this.isEdit;
     if (this.isEdit) {
-      params['done'] = this.done;
-      params['index'] = this.index;
+      params['id'] = this.data['id'];
+      params['done'] = this.data['done'];
+    } else {
+      params['done'] = false;
     }
     this.clickEvent.emit(params);
     this.isVisibleChange.emit(false);

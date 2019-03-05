@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,8 +9,6 @@ import { NzMessageService } from 'ng-zorro-antd';
 })
 export class DashboardComponent implements OnInit {
 
-  // 添加 Todo 标题
-  private todoTitle = '';
   // 数据数组
   private dataArray: Array<Object> = [];
 
@@ -19,12 +18,9 @@ export class DashboardComponent implements OnInit {
   private doneArray: Array<Object> = [];
 
   modalIsVisible: boolean = false;
-  editTitle: string = '';
-  editDate: string = '';
-  editDone: boolean = false;
-  editIndex: number = 0;
+  editData: Object = {};
 
-  constructor(private message: NzMessageService) { }
+  constructor(private message: NzMessageService, private http: HttpClient) { }
 
   // 生命周期
   ngOnInit() {
@@ -33,9 +29,10 @@ export class DashboardComponent implements OnInit {
 
   // 获取列表数据
   private getTodoList(): void {
-    const dataString: string = localStorage.getItem('todo-list');
-    if (dataString != null) {
-      this.dataArray = JSON.parse(dataString);
+    this.http.get('http://localhost:3000/todos').subscribe((res: Array<Object>) => {
+      this.dataArray = res;
+      this.doingArray = [];
+      this.doneArray = [];
       for (let i = 0; i < this.dataArray.length; i++) {
         const element: any = this.dataArray[i];
         if (element.done === true) {
@@ -44,79 +41,52 @@ export class DashboardComponent implements OnInit {
           this.doingArray.push(element);
         }
       }
-    }
+    });
   }
 
   // 添加Todo
   private addTodo(): void {
-    this.editTitle = '';
-    this.editDate = '';
-    this.editDone = false;
-    this.editIndex = 0;
+    this.editData = {}
     this.modalIsVisible = true;
   }
 
   // 添加、编辑事件
   addTodoEvent(data: Object) {
-    const item = {
-      title: data['title'],
-      date: data['date'],
-      done: data['done']
-    };
-
     if (data['done'] == true) {
-      this.doneArray[data['index']] = item;
+      this.changeItemNetRequest(data);
     } else {
       if (data['isEdit'] == true) {
-        this.doingArray[data['index']] = item;
+        this.changeItemNetRequest(data);
       } else {
-        this.doingArray.push(item);
+        this.http.post('http://localhost:3000/todos', data).subscribe((res) => {
+          this.getTodoList();
+        });
       }
     }
-    this.dataArray = this.doingArray.concat(this.doneArray);
-    localStorage.setItem('todo-list', JSON.stringify(this.dataArray));
   }
 
   // 打钩
   private checkItem(data: Object) {
-    const index: number = data['index'];
-    const done: boolean = data['done'];
-    const newItem = {
-      title: data['title'],
-      date: data['date'],
-      done: done
-    };
-    if (done) {
-      this.doingArray.splice(index, 1);
-      this.doneArray.push(newItem);
-    } else {
-      this.doneArray.splice(index, 1);
-      this.doingArray.push(newItem);
-    }
-    this.dataArray = this.doingArray.concat(this.doneArray);
-    localStorage.setItem('todo-list', JSON.stringify(this.dataArray));
+    this.changeItemNetRequest(data);
+  }
+
+  // 修改的网络请求
+  changeItemNetRequest(data: Object) {
+    this.http.put('http://localhost:3000/todos/' + data['id'], data).subscribe((res) => {
+      this.getTodoList();
+    });
   }
 
   // 编辑项目
   private editItem(data: Object) {
-    this.editTitle = data['title'];
-    this.editDate = data['date'];
-    this.editDone = data['done'];
-    this.editIndex = data['index'];
+    this.editData = data;
     this.modalIsVisible = true;
   }
 
   // 删除项目
   private deleteItem(data: Object) {
-    const index: number = data['index'];
-    const done: boolean = data['done'];
-    if (done) {
-      this.doneArray.splice(index, 1);
-    } else {
-      this.doingArray.splice(index, 1);
-    }
-    this.dataArray = this.doingArray.concat(this.doneArray);
-    localStorage.setItem('todo-list', JSON.stringify(this.dataArray));
+    this.http.delete('http://localhost:3000/todos/' + data['id']).subscribe((res) => {
+      this.getTodoList();
+    });
   }
-
 }
