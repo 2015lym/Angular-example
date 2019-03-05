@@ -1,0 +1,22 @@
+<div class="dashboard">
+  <h2>ToDoList</h2>
+  <div class="top-div">
+    <button nz-button nzType="primary" nzBlock (click)="addTodo()">添加待办</button>
+  </div>
+  <h2>正在进行 {{doingArray.length}}</h2>
+  <div *ngFor="let item of doingArray;let i = index" style="margin-top: 15px">
+    <app-item [index]="i" [title]="item.title" [date]="item.date" [done]="item.done"
+      (deleteItemEvent)="deleteItem($event)" (editItemEvent)="editItem($event)" (checkItemEvent)="checkItem($event)">
+    </app-item>
+  </div>
+  <h2>已经完成 {{doneArray.length}}</h2>
+  <div *ngFor="let item of doneArray;let i = index" style="margin-top: 15px">
+    <app-item [index]="i" [title]="item.title" [date]="item.date" [done]="item.done"
+      (checkItemEvent)="checkItem($event)" (editItemEvent)="editItem($event)" (deleteItemEvent)="deleteItem($event)">
+    </app-item>
+  </div>
+</div>
+
+<app-edit-modal [title]="editTitle" [date]="editDate" [done]="editDone" [index]="editIndex"
+  [(isVisible)]="modalIsVisible" (clickEvent)="addTodoEvent($event)">
+</app-edit-modal>

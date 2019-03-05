@@ -1,0 +1,31 @@
+<nz-modal [(nzVisible)]="isVisible" nzTitle="添加待办" nzOkText="确定" nzCancelText="取消" (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()">
+  <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="title" nzRequired>
+        <span>
+          标题
+          <i nz-icon nz-tooltip nzTitle="标题长度不超过15位" type="question-circle" theme="outline"></i>
+        </span>
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input id="title" formControlName="title">
+        <nz-form-explain *ngIf="validateForm.get('title').dirty && validateForm.get('title').errors">请输入标题!
+        </nz-form-explain>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired>
+        <span>
+          日期
+          <i nz-icon nz-tooltip nzTitle="不能选择过去的日期" type="question-circle" theme="outline"></i>
+        </span>
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <nz-date-picker formControlName="date"></nz-date-picker>
+        <nz-form-explain *ngIf="validateForm.get('date').dirty && validateForm.get('date').errors">请选择日期！
+        </nz-form-explain>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</nz-modal>
