@@ -12,7 +12,7 @@ import {
   template: `
   <nz-input-group [nzAddOnBeforeIcon]="focus ? 'anticon anticon-arrow-down' : 'anticon anticon-search'">
     <input nz-input [(ngModel)]="q" (focus)="qFocus()" (blur)="qBlur()"
-      [placeholder]="'menu.search.placeholder' | translate">
+      [placeholder]="'搜索：员工、文件、照片等'">
   </nz-input-group>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
