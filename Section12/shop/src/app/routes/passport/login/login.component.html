@@ -5,20 +5,20 @@
       <nz-form-item>
         <nz-form-control>
           <nz-input-group nzSize="large" nzPrefixIcon="anticon anticon-user">
-            <input nz-input formControlName="userName" placeholder="username: admin or user">
+            <input nz-input formControlName="userName" placeholder="用户名: admin 或 user">
           </nz-input-group>
           <nz-form-explain *ngIf="userName.dirty && userName.errors">
-            Please enter mobile number!
+            请输入手机号!
           </nz-form-explain>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
         <nz-form-control>
           <nz-input-group nzSize="large" nzPrefixIcon="anticon anticon-lock">
-            <input nz-input type="password" formControlName="password" placeholder="password: ng-alain.com">
+            <input nz-input type="password" formControlName="password" placeholder="密码: ng-alain.com">
           </nz-input-group>
           <nz-form-explain *ngIf="password.dirty && password.errors">
-            Please enter password!
+            请输入密码!
           </nz-form-explain>
         </nz-form-control>
       </nz-form-item>

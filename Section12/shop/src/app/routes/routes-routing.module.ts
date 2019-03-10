@@ -8,6 +8,8 @@ import { LayoutFullScreenComponent } from '../layout/fullscreen/fullscreen.compo
 import { LayoutPassportComponent } from '../layout/passport/passport.component';
 // dashboard pages
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardGeneralComponent } from './dashboard/dashboard-general/dashboard-general.component';
+import { DashboardEchartsComponent } from './dashboard/dashboard-echarts/dashboard-echarts.component';
 // passport pages
 import { UserLoginComponent } from './passport/login/login.component';
 import { UserRegisterComponent } from './passport/register/register.component';
@@ -23,19 +25,25 @@ const routes: Routes = [
     canActivate: [SimpleGuard],
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      { path: 'dashboard', component: DashboardComponent, data: { title: '仪表盘', titleI18n: 'dashboard' } },
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+        children: [
+          {
+            path: 'general',
+            component: DashboardGeneralComponent
+          },
+          {
+            path: 'echarts',
+            component: DashboardEchartsComponent
+          }
+        ]
+      },
       { path: 'exception', loadChildren: './exception/exception.module#ExceptionModule' },
       // 业务子模块
       // { path: 'widgets', loadChildren: './widgets/widgets.module#WidgetsModule' }
     ]
   },
-  // 全屏布局
-  // {
-  //     path: 'fullscreen',
-  //     component: LayoutFullScreenComponent,
-  //     children: [
-  //     ]
-  // },
   // passport
   {
     path: 'passport',

@@ -36,8 +36,8 @@ export class StartupService {
     ).pipe(
       // 接收其他拦截器后产生的异常消息
       catchError(([appData]) => {
-          resolve(null);
-          return [appData];
+        resolve(null);
+        return [appData];
       })
     ).subscribe(([appData]) => {
 
@@ -54,12 +54,12 @@ export class StartupService {
       // 设置页面标题的后缀
       this.titleService.suffix = res.app.name;
     },
-    () => { },
-    () => {
-      resolve(null);
-    });
+      () => { },
+      () => {
+        resolve(null);
+      });
   }
-  
+
   private viaMock(resolve: any, reject: any) {
     // const tokenData = this.tokenService.get();
     // if (!tokenData.token) {
@@ -91,14 +91,72 @@ export class StartupService {
         group: true,
         children: [
           {
-            text: '仪表盘',
+            text: '资产盘点',
             link: '/dashboard',
-            icon: { type: 'icon', value: 'appstore' }
+            icon: { type: 'icon', value: 'anticon-dashboard' },
+            children: [
+              {
+                text: '资产概况',
+                link: '/dashboard/general',
+              },
+              {
+                text: '交易数据分析',
+                link: '/dashboard/echarts',
+              }
+            ]
           },
           {
-            text: '快捷菜单',
-            icon: { type: 'icon', value: 'rocket' },
-            shortcutRoot: true
+            text: '商品管理',
+            link: '/commodity',
+            icon: { type: 'icon', value: 'appstore' },
+            children: [
+              {
+                text: '商品查询',
+                link: '/commodity/search',
+              },
+              {
+                text: '商品添加',
+                link: '/commodity/add',
+              },
+              {
+                text: '商品编辑',
+                link: '/commodity/edit',
+              }
+            ]
+          },
+          {
+            text: '个人中心',
+            link: '/person',
+            icon: { type: 'icon', value: 'anticon-user' },
+            children: [
+              {
+                text: '个人资料查看',
+                link: '/person/detail',
+              },
+              {
+                text: '个人资料设置',
+                link: '/person/setting',
+              }
+            ]
+          },
+          {
+            text: '消息管理',
+            link: '/message',
+            icon: { type: 'icon', value: 'anticon-cloud' },
+            children: [
+              {
+                text: '通知消息管理',
+                link: '/message/notice',
+              },
+              {
+                text: '举报消息管理',
+                link: '/message/report',
+              },
+              {
+                text: '意见反馈管理',
+                link: '/message/feedback',
+              }
+            ]
           }
         ]
       }
