@@ -6,10 +6,6 @@ import { environment } from '@env/environment';
 import { LayoutDefaultComponent } from '../layout/default/default.component';
 import { LayoutFullScreenComponent } from '../layout/fullscreen/fullscreen.component';
 import { LayoutPassportComponent } from '../layout/passport/passport.component';
-// dashboard pages
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { DashboardGeneralComponent } from './dashboard/dashboard-general/dashboard-general.component';
-import { DashboardEchartsComponent } from './dashboard/dashboard-echarts/dashboard-echarts.component';
 // passport pages
 import { UserLoginComponent } from './passport/login/login.component';
 import { UserRegisterComponent } from './passport/register/register.component';
@@ -17,6 +13,26 @@ import { UserRegisterResultComponent } from './passport/register-result/register
 // single pages
 import { CallbackComponent } from './callback/callback.component';
 import { UserLockComponent } from './passport/lock/lock.component';
+// 资产盘点
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardGeneralComponent } from './dashboard/dashboard-general/dashboard-general.component';
+import { DashboardEchartsComponent } from './dashboard/dashboard-echarts/dashboard-echarts.component';
+// 商品管理
+import { CommodityComponent } from './commodity/commodity.component';
+import { CommoditySearchComponent } from './commodity/commodity-search/commodity-search.component';
+import { CommodityAddComponent } from './commodity/commodity-add/commodity-add.component';
+import { CommodityEditComponent } from './commodity/commodity-edit/commodity-edit.component';
+// 个人中心
+import { PersonComponent } from './person/person.component';
+import { PersonDetailComponent } from './person/person-detail/person-detail.component';
+import { PersonSettingComponent } from './person/person-setting/person-setting.component';
+// 消息管理
+import { MessageComponent } from './message/message.component';
+import { MessageNoticeComponent } from './message/message-notice/message-notice.component';
+import { MessageReportComponent } from './message/message-report/message-report.component';
+import { MessageFeedbackComponent } from './message/message-feedback/message-feedback.component';
+// 个人中心
+// 消息管理
 
 const routes: Routes = [
   {
@@ -30,6 +46,10 @@ const routes: Routes = [
         component: DashboardComponent,
         children: [
           {
+            path: '',
+            component: DashboardGeneralComponent
+          },
+          {
             path: 'general',
             component: DashboardGeneralComponent
           },
@@ -39,9 +59,65 @@ const routes: Routes = [
           }
         ]
       },
+      {
+        path: 'commodity',
+        component: CommodityComponent,
+        children: [
+          {
+            path: '',
+            component: CommoditySearchComponent
+          },
+          {
+            path: 'add',
+            component: CommodityAddComponent
+          },
+          {
+            path: 'edit',
+            component: CommodityEditComponent
+          },
+          {
+            path: 'search',
+            component: CommoditySearchComponent
+          }
+        ]
+      },
+      {
+        path: 'person',
+        component: PersonComponent,
+        children: [
+          {
+            path: '',
+            component: PersonDetailComponent
+          },
+          {
+            path: 'detail',
+            component: PersonDetailComponent
+          },
+          {
+            path: 'setting',
+            component: PersonSettingComponent
+          }
+        ]
+      },
+      {
+        path: 'message',
+        component: MessageComponent,
+        children: [
+          {
+            path: 'notice',
+            component: MessageNoticeComponent
+          },
+          {
+            path: 'report',
+            component: MessageReportComponent
+          },
+          {
+            path: 'feedback',
+            component: MessageFeedbackComponent
+          }
+        ]
+      },
       { path: 'exception', loadChildren: './exception/exception.module#ExceptionModule' },
-      // 业务子模块
-      // { path: 'widgets', loadChildren: './widgets/widgets.module#WidgetsModule' }
     ]
   },
   // passport
@@ -64,9 +140,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(
       routes, {
-        useHash: environment.useHash,
-        // NOTICE: If you use `reuse-tab` component and turn on keepingScroll you can set to `disabled`
-        // Pls refer to https://ng-alain.com/components/reuse-tab
+        useHash: false,
         scrollPositionRestoration: 'top',
       }
     )],

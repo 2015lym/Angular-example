@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { AlainThemeModule } from '@delon/theme';
 import { DelonABCModule } from '@delon/abc';
 import { DelonACLModule } from '@delon/acl';
+import { DelonChartModule } from '@delon/chart';
 import { DelonFormModule } from '@delon/form';
 
 // #region third libs
@@ -31,6 +32,7 @@ const DIRECTIVES = [];
     AlainThemeModule.forChild(),
     DelonABCModule,
     DelonACLModule,
+    DelonChartModule,
     DelonFormModule,
     // third libs
     ...THIRDMODULES
@@ -48,6 +50,7 @@ const DIRECTIVES = [];
     AlainThemeModule,
     DelonABCModule,
     DelonACLModule,
+    DelonChartModule,
     DelonFormModule,
     // third libs
     ...THIRDMODULES,
