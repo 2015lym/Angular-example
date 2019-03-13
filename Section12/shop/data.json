@@ -1,0 +1,53 @@
+{
+  "commodity": [
+    {
+      "id": 1,
+      "pId": 1130200088,
+      "name": "手机",
+      "price": 1500,
+      "salesVolume": 2123,
+      "inventory": 5200,
+      "description": "手机销量良好，请继续保持"
+    },
+    {
+      "id": 2,
+      "pId": 1130200218,
+      "name": "电脑",
+      "price": 3500,
+      "salesVolume": 526,
+      "inventory": 280,
+      "description": "库存较少，请及时补充"
+    },
+    {
+      "id": 3,
+      "pId": 1130200333,
+      "name": "电视",
+      "price": 2000,
+      "salesVolume": 877,
+      "inventory": 1088,
+      "description": "本期销量不佳"
+    }
+  ],
+  "inventorLists": {
+    "saleroom": [
+      "一月：32455¥",
+      "二月：45475¥",
+      "三月：暂无"
+    ],
+    "salesVolume": [
+      "一月：2571件",
+      "二月：3467件",
+      "三月：暂无"
+    ],
+    "payway": {
+      "alipay": "43",
+      "wechat": "39",
+      "cash": "18"
+    },
+    "adRate": [
+      "一月：20%",
+      "二月：30%",
+      "三月：暂无"
+    ]
+  }
+}

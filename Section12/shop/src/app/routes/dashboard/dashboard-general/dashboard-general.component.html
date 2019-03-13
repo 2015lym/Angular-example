@@ -1,9 +1,7 @@
 <div nz-row [nzGutter]="24" class="pt-lg">
   <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="6">
     <nz-card nzTitle="季度销售额" [nzExtra]="saleTemplate">
-      <p>一月：32455¥</p>
-      <p>二月：32455¥</p>
-      <p>三月：暂无</p>
+      <p *ngFor="let item of baseData.saleroom">{{item}}</p>
     </nz-card>
     <ng-template #saleTemplate>
       <nz-tooltip nzTitle="查看季度销售额">
@@ -13,9 +11,7 @@
   </div>
   <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="6">
     <nz-card nzTitle="季度销量" [nzExtra]="volumeTemplate">
-      <p>一月：2571件</p>
-      <p>二月：3467件</p>
-      <p>三月：暂无</p>
+      <p *ngFor="let item of baseData.salesVolume">{{item}}</p>
     </nz-card>
     <ng-template #volumeTemplate>
       <nz-tooltip nzTitle="查看季度销量">
@@ -25,9 +21,9 @@
   </div>
   <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="6">
     <nz-card nzTitle="用户支付比例" [nzExtra]="payWayTemplate">
-      <p>支付宝：40%</p>
-      <p>微信支付：40%</p>
-      <p>现金：20%</p>
+      <p>支付宝：{{baseData?.payway?.alipay}}%</p>
+      <p>微信支付：{{baseData?.payway?.wechat}}%</p>
+      <p>现金：{{baseData?.payway?.cash}}%</p>
     </nz-card>
     <ng-template #payWayTemplate>
       <nz-tooltip nzTitle="查看用户支付方式偏好">
@@ -37,9 +33,7 @@
   </div>
   <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="6">
     <nz-card nzTitle="广告转化率" [nzExtra]="adTemplate">
-      <p>一月：30%</p>
-      <p>二月：30%</p>
-      <p>三月：30%</p>
+      <p *ngFor="let item of baseData.adRate">{{item}}</p>
     </nz-card>
     <ng-template #adTemplate>
       <nz-tooltip nzTitle="查看广告转化率">
@@ -48,3 +42,32 @@
     </ng-template>
   </div>
 </div>
+<nz-card [nzBordered]="false">
+  <nz-table #myTable nzBordered [nzData]="listData">
+    <thead (nzSortChange)="sort($event)" nzSingleSort>
+      <tr>
+        <th>商品id</th>
+        <th>商品名</th>
+        <th nzShowSort nzSortKey="price">售价</th>
+        <th nzShowSort nzSortKey="salesVolume">销量</th>
+        <th nzShowSort nzSortKey="inventory">库存</th>
+        <th nzShowExpand nzWidth="100px">详细说明</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-template ngFor let-data [ngForOf]="myTable.data">
+        <tr>
+          <td>{{data.pId}}</td>
+          <td>{{data.name}}</td>
+          <td>{{data.price}}</td>
+          <td>{{data.salesVolume}}</td>
+          <td>{{data.inventory}}</td>
+          <td nzShowExpand [(nzExpand)]="mapOfExpandData[data.id]"></td>
+        </tr>
+        <tr [nzExpand]="mapOfExpandData[data.id]">
+          <td colspan="6">{{data.description}}</td>
+        </tr>
+      </ng-template>
+    </tbody>
+  </nz-table>
+</nz-card>
