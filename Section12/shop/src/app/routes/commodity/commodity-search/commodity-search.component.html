@@ -1,3 +1,24 @@
-<p>
-  commodity-search works!
-</p>
+<nz-card [nzBordered]="false">
+  <nz-table #myTable nzBordered [nzData]="listData">
+    <thead>
+      <tr>
+        <th>商品id</th>
+        <th>商品名</th>
+        <th>售价</th>
+        <th>销量</th>
+        <th>库存</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-template ngFor let-data [ngForOf]="myTable.data">
+        <tr>
+          <td>{{data.pId}}</td>
+          <td>{{data.name}}</td>
+          <td>{{data.price}}</td>
+          <td>{{data.salesVolume}}</td>
+          <td>{{data.inventory}}</td>
+        </tr>
+      </ng-template>
+    </tbody>
+  </nz-table>
+</nz-card>

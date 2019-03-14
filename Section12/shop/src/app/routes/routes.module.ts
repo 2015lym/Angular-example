@@ -15,7 +15,6 @@ import { CommodityComponent } from './commodity/commodity.component';
 import { PersonComponent } from './person/person.component';
 import { MessageComponent } from './message/message.component';
 import { CommoditySearchComponent } from './commodity/commodity-search/commodity-search.component';
-import { CommodityAddComponent } from './commodity/commodity-add/commodity-add.component';
 import { CommodityEditComponent } from './commodity/commodity-edit/commodity-edit.component';
 import { PersonDetailComponent } from './person/person-detail/person-detail.component';
 import { PersonSettingComponent } from './person/person-setting/person-setting.component';
@@ -24,6 +23,7 @@ import { MessageReportComponent } from './message/message-report/message-report.
 import { MessageFeedbackComponent } from './message/message-feedback/message-feedback.component';
 import { DashboardGeneralComponent } from './dashboard/dashboard-general/dashboard-general.component';
 import { DashboardEchartsComponent } from './dashboard/dashboard-echarts/dashboard-echarts.component';
+import { SearchFilterPipe } from '@core/pipes/searchFilter/searchFilter';
 
 const COMPONENTS = [
   DashboardComponent,
@@ -45,7 +45,6 @@ const COMPONENTS_NOROUNT = [];
     PersonComponent,
     MessageComponent,
     CommoditySearchComponent,
-    CommodityAddComponent,
     CommodityEditComponent,
     PersonDetailComponent,
     PersonSettingComponent,
@@ -53,7 +52,8 @@ const COMPONENTS_NOROUNT = [];
     MessageReportComponent,
     MessageFeedbackComponent,
     DashboardGeneralComponent,
-    DashboardEchartsComponent
+    DashboardEchartsComponent,
+    SearchFilterPipe
   ],
   entryComponents: COMPONENTS_NOROUNT
 })

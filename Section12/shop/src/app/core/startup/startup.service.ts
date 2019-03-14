@@ -115,11 +115,7 @@ export class StartupService {
                 link: '/commodity/search',
               },
               {
-                text: '商品添加',
-                link: '/commodity/add',
-              },
-              {
-                text: '商品编辑',
+                text: '商品添加/编辑',
                 link: '/commodity/edit',
               }
             ]

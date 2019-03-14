@@ -20,7 +20,6 @@ import { DashboardEchartsComponent } from './dashboard/dashboard-echarts/dashboa
 // 商品管理
 import { CommodityComponent } from './commodity/commodity.component';
 import { CommoditySearchComponent } from './commodity/commodity-search/commodity-search.component';
-import { CommodityAddComponent } from './commodity/commodity-add/commodity-add.component';
 import { CommodityEditComponent } from './commodity/commodity-edit/commodity-edit.component';
 // 个人中心
 import { PersonComponent } from './person/person.component';
@@ -66,10 +65,6 @@ const routes: Routes = [
           {
             path: '',
             component: CommoditySearchComponent
-          },
-          {
-            path: 'add',
-            component: CommodityAddComponent
           },
           {
             path: 'edit',
