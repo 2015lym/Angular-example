@@ -22,4 +22,14 @@ export class CommoditySearchComponent implements OnInit {
       this.listData = res;
     });
   }
+
+  search(): void {
+    // const filterFunc = (item: { name: string, age: number, address: string }) => {
+    //   return (this.listOfSearchAddress.length ? this.listOfSearchAddress.some(address => item.address.indexOf(address) !== -1) : true) &&
+    //     (item.name.indexOf(this.searchValue) !== -1);
+    // };
+    // const data = this.listOfData.filter((item: { name: string, age: number, address: string }) => filterFunc(item));
+    // // @ts-ignore
+    // this.listOfDisplayData = data.sort((a, b) => (this.sortValue === 'ascend') ? (a[ this.sortName! ] > b[ this.sortName! ] ? 1 : -1) : (b[ this.sortName! ] > a[ this.sortName! ] ? 1 : -1));
+  }
 }

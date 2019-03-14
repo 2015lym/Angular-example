@@ -23,7 +23,6 @@ import { MessageReportComponent } from './message/message-report/message-report.
 import { MessageFeedbackComponent } from './message/message-feedback/message-feedback.component';
 import { DashboardGeneralComponent } from './dashboard/dashboard-general/dashboard-general.component';
 import { DashboardEchartsComponent } from './dashboard/dashboard-echarts/dashboard-echarts.component';
-import { SearchFilterPipe } from '@core/pipes/searchFilter/searchFilter';
 
 const COMPONENTS = [
   DashboardComponent,
@@ -37,7 +36,7 @@ const COMPONENTS = [
 ];
 const COMPONENTS_NOROUNT = [];
 @NgModule({
-  imports: [ SharedModule, RouteRoutingModule ],
+  imports: [SharedModule, RouteRoutingModule],
   declarations: [
     ...COMPONENTS,
     ...COMPONENTS_NOROUNT,
@@ -52,9 +51,8 @@ const COMPONENTS_NOROUNT = [];
     MessageReportComponent,
     MessageFeedbackComponent,
     DashboardGeneralComponent,
-    DashboardEchartsComponent,
-    SearchFilterPipe
+    DashboardEchartsComponent
   ],
   entryComponents: COMPONENTS_NOROUNT
 })
-export class RoutesModule {}
+export class RoutesModule { }
