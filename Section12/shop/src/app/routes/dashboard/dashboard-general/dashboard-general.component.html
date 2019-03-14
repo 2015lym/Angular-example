@@ -1,7 +1,7 @@
 <div nz-row [nzGutter]="24" class="pt-lg">
   <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="6">
     <nz-card nzTitle="季度销售额" [nzExtra]="saleTemplate">
-      <p *ngFor="let item of baseData.saleroom">{{item}}</p>
+      <p *ngFor="let item of baseData.saleroom">{{item.key}}：{{item.value}}¥</p>
     </nz-card>
     <ng-template #saleTemplate>
       <nz-tooltip nzTitle="查看季度销售额">
@@ -11,7 +11,7 @@
   </div>
   <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="6">
     <nz-card nzTitle="季度销量" [nzExtra]="volumeTemplate">
-      <p *ngFor="let item of baseData.salesVolume">{{item}}</p>
+      <p *ngFor="let item of baseData.salesVolume">{{item.key}}：{{item.value}}</p>
     </nz-card>
     <ng-template #volumeTemplate>
       <nz-tooltip nzTitle="查看季度销量">
