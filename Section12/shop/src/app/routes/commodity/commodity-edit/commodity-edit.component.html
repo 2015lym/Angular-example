@@ -1,3 +1,77 @@
-<p>
-  commodity-edit works!
-</p>
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="pId" nzRequired>
+      <span>
+        商品ID
+      </span>
+    </nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input id="pId" formControlName="pId">
+      <nz-form-explain *ngIf="validateForm.get('pId').dirty && validateForm.get('pId').errors">请输入商品ID!
+      </nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="name" nzRequired>
+      <span>
+        商品名
+      </span>
+    </nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input id="name" formControlName="name">
+      <nz-form-explain *ngIf="validateForm.get('name').dirty && validateForm.get('name').errors">请输入商品名!
+      </nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="price" nzRequired>
+      <span>
+        价格
+      </span>
+    </nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input id="price" formControlName="price">
+      <nz-form-explain *ngIf="validateForm.get('price').dirty && validateForm.get('price').errors">请输入价格!
+      </nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="salesVolume" nzRequired>
+      <span>
+        销量
+      </span>
+    </nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input id="salesVolume" formControlName="salesVolume">
+      <nz-form-explain *ngIf="validateForm.get('salesVolume').dirty && validateForm.get('salesVolume').errors">请输入销量!
+      </nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="inventory" nzRequired>
+      <span>
+        库存
+      </span>
+    </nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input id="inventory" formControlName="inventory">
+      <nz-form-explain *ngIf="validateForm.get('inventory').dirty && validateForm.get('inventory').errors">请输入库存!
+      </nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="description">
+      <span>
+        描述
+      </span>
+    </nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input id="description" formControlName="description">
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item nz-row style="margin-bottom:8px;">
+    <nz-form-control [nzSpan]="14" [nzOffset]="6">
+      <button nz-button nzType="primary">保存</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>
