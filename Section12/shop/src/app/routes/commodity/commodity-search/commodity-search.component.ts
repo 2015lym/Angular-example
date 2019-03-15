@@ -46,11 +46,6 @@ export class CommoditySearchComponent implements OnInit {
     this.getListData();
   }
 
-  // 编辑
-  edit() {
-
-  }
-
   // 删除
   delete(data) {
     this.confirmModal = this.modal.confirm({
