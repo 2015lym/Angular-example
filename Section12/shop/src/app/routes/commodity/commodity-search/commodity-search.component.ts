@@ -9,6 +9,7 @@ import { _HttpClient } from '@delon/theme';
 export class CommoditySearchComponent implements OnInit {
   // 列表数据
   listData = [];
+  title = '';
 
   constructor(private http: _HttpClient) { }
 
@@ -18,18 +19,25 @@ export class CommoditySearchComponent implements OnInit {
 
   // 获取列表数据
   getListData() {
-    this.http.get('http://localhost:3000/commodity').subscribe((res: Array<Object>) => {
+    let url;
+    if (this.title == '') {
+      url = 'http://localhost:3000/commodity';
+    } else {
+      url = 'http://localhost:3000/commodity?name=' + this.title;
+    }
+    this.http.get(url).subscribe((res: Array<Object>) => {
       this.listData = res;
     });
   }
 
-  search(): void {
-    // const filterFunc = (item: { name: string, age: number, address: string }) => {
-    //   return (this.listOfSearchAddress.length ? this.listOfSearchAddress.some(address => item.address.indexOf(address) !== -1) : true) &&
-    //     (item.name.indexOf(this.searchValue) !== -1);
-    // };
-    // const data = this.listOfData.filter((item: { name: string, age: number, address: string }) => filterFunc(item));
-    // // @ts-ignore
-    // this.listOfDisplayData = data.sort((a, b) => (this.sortValue === 'ascend') ? (a[ this.sortName! ] > b[ this.sortName! ] ? 1 : -1) : (b[ this.sortName! ] > a[ this.sortName! ] ? 1 : -1));
+  // 搜索
+  search() {
+    this.getListData();
+  }
+
+  // 重置
+  reset() {
+    this.title = '';
+    this.getListData();
   }
 }
