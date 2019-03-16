@@ -19,13 +19,13 @@ export class CommodityEditComponent implements OnInit {
     private message: NzMessageService,
     private activatedRoute: ActivatedRoute) {
     this.validateForm = this.fb.group({
-      id: [null,],
+      id: [null],
       pId: [null, [Validators.required, Validators.pattern(/^[0-9]*$/)]],
       name: [null, [Validators.required]],
       price: [null, [Validators.required, Validators.pattern(/^[0-9]*$/)]],
       salesVolume: [null, [Validators.required, Validators.pattern(/^[0-9]*$/)]],
       inventory: [null, [Validators.required]],
-      description: [null,]
+      description: [null]
     });
   }
 
