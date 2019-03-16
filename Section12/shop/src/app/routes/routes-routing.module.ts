@@ -25,13 +25,6 @@ import { CommodityEditComponent } from './commodity/commodity-edit/commodity-edi
 import { PersonComponent } from './person/person.component';
 import { PersonDetailComponent } from './person/person-detail/person-detail.component';
 import { PersonSettingComponent } from './person/person-setting/person-setting.component';
-// 消息管理
-import { MessageComponent } from './message/message.component';
-import { MessageNoticeComponent } from './message/message-notice/message-notice.component';
-import { MessageReportComponent } from './message/message-report/message-report.component';
-import { MessageFeedbackComponent } from './message/message-feedback/message-feedback.component';
-// 个人中心
-// 消息管理
 
 const routes: Routes = [
   {
@@ -91,24 +84,6 @@ const routes: Routes = [
           {
             path: 'setting',
             component: PersonSettingComponent
-          }
-        ]
-      },
-      {
-        path: 'message',
-        component: MessageComponent,
-        children: [
-          {
-            path: 'notice',
-            component: MessageNoticeComponent
-          },
-          {
-            path: 'report',
-            component: MessageReportComponent
-          },
-          {
-            path: 'feedback',
-            component: MessageFeedbackComponent
           }
         ]
       },

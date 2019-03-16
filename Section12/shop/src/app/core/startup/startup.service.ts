@@ -134,25 +134,6 @@ export class StartupService {
                 link: '/person/setting',
               }
             ]
-          },
-          {
-            text: '消息管理',
-            link: '/message',
-            icon: { type: 'icon', value: 'anticon-cloud' },
-            children: [
-              {
-                text: '通知消息管理',
-                link: '/message/notice',
-              },
-              {
-                text: '举报消息管理',
-                link: '/message/report',
-              },
-              {
-                text: '意见反馈管理',
-                link: '/message/feedback',
-              }
-            ]
           }
         ]
       }
