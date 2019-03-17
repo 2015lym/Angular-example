@@ -1,25 +1,16 @@
 <nz-card [nzBordered]="false" class="mb-lg">
-  <ng-container>
-    <div class="avatarHolder">
-      <img src="https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png">
-      <div class="name">user.name}}</div>
-      <div>user.signature}}</div>
-    </div>
-    <div class="detail">
-      <p><i class="title"></i>user.title}}</p>
-      <p><i class="group"></i>user.group}}</p>
-      <p>
-        <i class="address"></i>
-        user.geographic.province.label}}
-        user.geographic.city.label}}
-      </p>
-    </div>
+  <div class="avatarHolder">
+    <img style="width:100px;height:100px;" [src]="userInfo?.avatar">
     <nz-divider nzDashed></nz-divider>
-    <div class="tags">
-      <nz-tag [nzColor]="'#f50'">#f50</nz-tag>
-      <nz-tag [nzColor]="'#2db7f5'">#2db7f5</nz-tag>
-      <nz-tag [nzColor]="'#87d068'">#87d068</nz-tag>
-      <nz-tag [nzColor]="'#108ee9'">#108ee9</nz-tag>
-    </div>
-  </ng-container>
-</nz-card>·
+    <div>姓名：{{userInfo?.username}}</div>
+    <div>身份：{{userInfo?.status}}</div>
+    <div>个性签名：{{userInfo?.sign}}</div>
+  </div>
+  <nz-divider nzDashed></nz-divider>
+  <div class="tags">
+    <nz-tag [nzColor]="'#f50'">技术控</nz-tag>
+    <nz-tag [nzColor]="'#2db7f5'">管理员</nz-tag>
+    <nz-tag [nzColor]="'#87d068'">业绩优秀</nz-tag>
+    <nz-tag [nzColor]="'#108ee9'">步步高升</nz-tag>
+  </div>
+</nz-card>

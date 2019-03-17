@@ -1,3 +1,56 @@
-<p>
-  person-setting works!
-</p>
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="avatar" nzRequired>
+        <span>
+          头像URL
+        </span>
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input id="avatar" formControlName="avatar">
+        <nz-form-explain *ngIf="validateForm.get('avatar').dirty && validateForm.get('avatar').errors">请输入头像URL!
+        </nz-form-explain>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="username" nzRequired>
+        <span>
+          姓名
+        </span>
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input id="username" formControlName="username">
+        <nz-form-explain *ngIf="validateForm.get('username').dirty && validateForm.get('username').errors">请输入姓名!
+        </nz-form-explain>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="status" nzRequired>
+        <span>
+          身份
+        </span>
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <nz-select id="status" formControlName="status" nzPlaceHolder="请选择">
+          <nz-option nzValue="普通用户" nzLabel="普通用户"></nz-option>
+          <nz-option nzValue="管理员" nzLabel="管理员"></nz-option>
+        </nz-select>
+        <nz-form-explain *ngIf="validateForm.get('status').dirty && validateForm.get('status').errors">请输入价格!
+        </nz-form-explain>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="sign">
+        <span>
+          个性签名
+        </span>
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input id="sign" formControlName="sign">
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item nz-row style="margin-bottom:8px;">
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button nz-button nzType="primary">保存</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>

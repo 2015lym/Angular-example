@@ -114,5 +114,11 @@
         "y": 523
       }
     ]
+  },
+  "user": {
+    "avatar": "https://avatars1.githubusercontent.com/u/16334445?s=460&v=4",
+    "username": "张三",
+    "status": "管理员",
+    "sign": "大家吼啊1"
   }
 }
