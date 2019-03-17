@@ -27,24 +27,18 @@ export class HeaderNotifyComponent {
       title: '通知',
       list: [],
       emptyText: '无',
-      emptyImage:
-        'https://gw.alipayobjects.com/zos/rmsportal/wAhyIChODzsoKIOBHcBk.svg',
       clearText: '清空消息',
     },
     {
       title: '举报',
       list: [],
       emptyText: '无',
-      emptyImage:
-        'https://gw.alipayobjects.com/zos/rmsportal/sAuJeJzSKbUmHfBQRzmZ.svg',
       clearText: '清空消息',
     },
     {
       title: '待办',
       list: [],
       emptyText: '无',
-      emptyImage:
-        'https://gw.alipayobjects.com/zos/rmsportal/HsIsxMZiWKrNUavQUXqx.svg',
       clearText: '清空消息',
     },
   ];
@@ -83,16 +77,12 @@ export class HeaderNotifyComponent {
       this.data = this.updateNoticeData([
         {
           id: '000000001',
-          avatar:
-            'https://gw.alipayobjects.com/zos/rmsportal/ThXAXghbEsBCCSDihZxY.png',
           title: '手机货物不足，请及时补货',
           datetime: '2019-03-09',
           type: '通知',
         },
         {
           id: '000000002',
-          avatar:
-            'https://gw.alipayobjects.com/zos/rmsportal/OKJXDXrmkNshAMvwtvhu.png',
           title: '本周周末加班',
           datetime: '2019-03-09',
           type: '通知',
