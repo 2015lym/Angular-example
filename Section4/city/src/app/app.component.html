@@ -1,0 +1,13 @@
+<nz-card style="margin: 30px; background-color: #f2f4f5">
+  <nz-radio-group [(ngModel)]="radioValue" [nzButtonStyle]="'solid'">
+    <label nz-radio-button nzValue="beijing">北京</label>
+    <label nz-radio-button nzValue="shanghai">上海</label>
+    <label nz-radio-button nzValue="guangzhou">广州</label>
+  </nz-radio-group>
+
+  <div style="margin-top: 30px">
+    <app-beijing *ngIf="radioValue == 'beijing'"></app-beijing>
+    <app-shanghai *ngIf="radioValue == 'shanghai'"></app-shanghai>
+    <app-guangzhou *ngIf="radioValue == 'guangzhou'"></app-guangzhou>
+  </div>
+</nz-card>
