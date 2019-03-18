@@ -7,9 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
-  condition = true;
+  isMan = true;
 
-  changeShow() {
-    this.condition = !this.condition;
+  changeShow(sex: string) {
+    if (sex === 'man') {
+      this.isMan = true;
+    } else {
+      this.isMan = false;
+    }
   }
 }
