@@ -18,7 +18,6 @@ export class UserInfoComponent implements OnInit {
   // 生日
   birthday: string = '';
 
-
   constructor(private util: UtilsService) { }
 
   ngOnInit() {
