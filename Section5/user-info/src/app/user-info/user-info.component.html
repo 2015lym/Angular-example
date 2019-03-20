@@ -1,0 +1,9 @@
+<input nz-input placeholder="手机号" [(ngModel)]="phoneNumber">
+<button (click)="verifyPhoneNumber()" class="top" nz-button nzType="primary">验证手机号</button>
+
+<input class="top" nz-input placeholder="电子邮箱" [(ngModel)]="email">
+<button (click)="verifyEmail()" class="top" nz-button nzType="primary">验证电子邮箱</button>
+
+<nz-date-picker class="top" [(ngModel)]="date" (ngModelChange)="onChange($event)"></nz-date-picker>
+<div class="top">生日：{{birthday}}</div>
+<button (click)="changeDate()" class="top" nz-button nzType="primary">转换日期</button>
