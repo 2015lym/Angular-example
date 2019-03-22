@@ -25,10 +25,35 @@ export class FormTestComponent implements OnInit {
   }
 
   submitForm(): void {
+    let params = {};
     for (const i in this.validateForm.controls) {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();
+      if (!(this.validateForm.controls[i].status == 'VALID') && this.validateForm.controls[i].status !== 'DISABLED') {
+        return;
+      }
+      if (this.validateForm.controls[i] && this.validateForm.controls[i].value) {
+        params[i] = this.validateForm.controls[i].value;
+      } else {
+        params[i] = '';
+      }
     }
+    this.setDate('birthday');
+    params['birthday'] = this.validateForm.get('birthday').value;
+    console.log(params);
   }
 
+    // 设置日期格式
+    setDate(dates) {
+      const time = new Date(this.validateForm.get(dates).value);
+      const datetime = time.getFullYear() + '-' + this.formatDayAndMonth(time.getMonth() + 1) + '-' + this.formatDayAndMonth(time.getDate());
+      this.validateForm.get(dates).setValue(datetime);
+    }
+  
+    formatDayAndMonth(val) {
+      if (val < 10) {
+        val = '0' + val;
+      }
+      return val;
+    }
 }

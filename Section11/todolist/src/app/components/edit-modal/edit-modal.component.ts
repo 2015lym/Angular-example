@@ -73,7 +73,7 @@ export class EditModalComponent implements OnInit {
         params[i] = '';
       }
     }
-    this.setDate('date'); // 颁布日期
+    this.setDate('date');
     params['date'] = this.validateForm.get('date').value;
     params['isEdit'] = this.isEdit;
     if (this.isEdit) {
